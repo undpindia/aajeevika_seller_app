@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="orderId"
+            type="String" />
+
+        <variable
+            name="interestId"
+            type="String" />
+
+        <variable
+            name="orderDate"
+            type="String" />
+
+        <variable
+            name="buyerName"
+            type="String" />
+
+        <variable
+            name="buyerMobile"
+            type="String" />
+
+        <variable
+            name="buyerEmail"
+            type="String" />
+
+        <variable
+            name="buyerProfileImage"
+            type="String" />
+
+        <variable
+            name="totalAmount"
+            type="String" />
+
+        <variable
+            name="sellerName"
+            type="String" />
+
+        <variable
+            name="sellerProfileImage"
+            type="String" />
+
+        <variable
+            name="sellerRating"
+            type="float" />
+
+        <variable
+            name="sellerReviewMessage"
+            type="String" />
+
+        <variable
+            name="buyerRating"
+            type="float" />
+
+        <variable
+            name="buyerReviewMessage"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
+            app:title="@{ @string/order_detail }" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:id="@+id/order_id_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="@{ orderId }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="18sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/interest_date_value"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/interest_date_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/solid_gray_50_r24"
+                        android:includeFontPadding="false"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="4dp"
+                        android:text="@{ orderDate }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="12sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/order_id_value"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="30dp"
+                    app:cardBackgroundColor="@color/green_alpha_10"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginEnd="14dp"
+                            android:includeFontPadding="false"
+                            android:text="@string/buyer_details"
+                            android:textColor="@color/green"
+                            android:textSize="20sp"
+                            app:fontFamily="@font/sarabun_bold"
+                            app:layout_constrainedWidth="true" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginBottom="10dp"
+                            android:includeFontPadding="false"
+                            android:text="@{ buyerName }"
+                            android:textColor="@color/gray_600"
+                            android:textSize="18sp"
+                            app:fontFamily="@font/sarabun_bold"
+                            app:layout_constrainedWidth="true" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white_alpha_75"
+                            android:padding="12dp">
+
+                            <ImageView
+                                android:id="@+id/call_img"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/call_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/mobile_number_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:includeFontPadding="false"
+                                android:text="@{ buyerMobile }"
+                                android:textColor="@color/gray_600"
+                                android:textSize="14sp"
+                                app:fontFamily="@font/sarabun_semibold"
+                                app:layout_constrainedWidth="true"
+                                app:layout_constraintBottom_toBottomOf="@+id/call_img"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toEndOf="@+id/call_img"
+                                app:layout_constraintTop_toTopOf="@+id/call_img" />
+
+                            <ImageView
+                                android:id="@+id/mail_img"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/email_icon"
+                                android:visibility="@{ buyerEmail==null || buyerMobile.empty? View.GONE: View.VISIBLE, default=gone }"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/call_img"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/mail_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:includeFontPadding="false"
+                                android:text="@{ buyerEmail }"
+                                android:textColor="@color/gray_600"
+                                android:textSize="14sp"
+                                android:visibility="@{ buyerEmail==null || buyerMobile.empty? View.GONE: View.VISIBLE, default=gone }"
+                                app:fontFamily="@font/sarabun_semibold"
+                                app:layout_constrainedWidth="true"
+                                app:layout_constraintBottom_toBottomOf="@+id/mail_img"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toEndOf="@+id/mail_img"
+                                app:layout_constraintTop_toTopOf="@+id/mail_img" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="14dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="16dp">
+
+                            <TextView
+                                android:id="@+id/interest_id_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="@string/interest_id"
+                                android:textColor="@color/gray_600"
+                                android:textSize="14sp"
+                                app:fontFamily="@font/sarabun_bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/interest_id_value"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/interest_id_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:includeFontPadding="false"
+                                android:text="@{ interestId }"
+                                android:textColor="@color/gray_600"
+                                android:textSize="14sp"
+                                app:layout_constrainedWidth="true"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/interest_id_txt"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_View"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="14dp">
+
+                    <TextView
+                        android:id="@+id/total_amount_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="@string/total_amount"
+                        android:textColor="@color/gray_400"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/total_amount_value"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/total_amount_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:includeFontPadding="false"
+                        android:text="@{ @string/price_format(totalAmount) }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/total_amount_txt"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/buyer_profile_img"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/profile_placeholder"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:loadImageFromNetwork="@{ sellerProfileImage }"
+                        app:placeholder="@{ @drawable/profile_placeholder }" />
+
+                    <TextView
+                        android:id="@+id/buyer_name_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:includeFontPadding="false"
+                        android:text="@{ sellerName }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toTopOf="@+id/buyer_rating_bar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/buyer_profile_img"
+                        app:layout_constraintTop_toTopOf="@+id/buyer_profile_img"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <RatingBar
+                        android:id="@+id/buyer_rating_bar"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:max="5"
+                        android:rating="@{ sellerRating }"
+                        android:stepSize="0.1"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/buyer_profile_img"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/buyer_profile_img"
+                        app:layout_constraintTop_toBottomOf="@+id/buyer_name_txt" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:includeFontPadding="false"
+                        android:text="@{ sellerReviewMessage }"
+                        android:textColor="@color/gray_400"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/buyer_profile_img" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="@{buyerReviewMessage == null? View.GONE: View.VISIBLE, default=gone}">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/seller_profile_img"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/profile_placeholder"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:loadImageFromNetwork="@{ buyerProfileImage }"
+                        app:placeholder="@{ @drawable/profile_placeholder }" />
+
+                    <TextView
+                        android:id="@+id/seller_name_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:includeFontPadding="false"
+                        android:text="@{ buyerName }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toTopOf="@+id/seller_rating_bar"
+                        app:layout_constraintEnd_toStartOf="@+id/seller_profile_img"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/seller_profile_img"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <RatingBar
+                        android:id="@+id/seller_rating_bar"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:max="5"
+                        android:rating="@{ buyerRating }"
+                        android:stepSize="0.1"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/seller_profile_img"
+                        app:layout_constraintEnd_toStartOf="@+id/seller_profile_img"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/seller_name_txt" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="end"
+                        android:includeFontPadding="false"
+                        android:text="@{ buyerReviewMessage }"
+                        android:textColor="@color/gray_400"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/seller_profile_img" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

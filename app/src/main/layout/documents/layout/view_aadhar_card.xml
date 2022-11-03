@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="isRequired"
+            type="boolean" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/gray_50"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|start"
+                android:orientation="horizontal"
+                android:paddingHorizontal="18dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="16dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/id_card_icon"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:includeFontPadding="false"
+                    android:text="@string/aadhar_card"
+                    android:textColor="@color/gray_600"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/sarabun_semibold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="18dp"
+                android:background="@color/gray_300" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AajeevikaCLF.TextInputLayout"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="18sp"
+                android:hint="@{isRequired?@string/aadhar_card_number_required:@string/aadhar_card_number, default=@string/aadhar_card_number}"
+                app:boxCornerRadiusBottomEnd="4dp"
+                app:boxCornerRadiusBottomStart="4dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp">
+
+                <EditText
+                    android:id="@+id/input_aadahr_number"
+                    style="@style/AajeevikaCLF.EditText"
+                    android:digits="0123456789"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    app:disableSpace="@{ true }"
+                    tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AajeevikaCLF.TextInputLayout"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="16sp"
+                android:hint="@{isRequired?@string/name_as_per_aadhar_required:@string/name_as_per_aadhar, default=@string/name_as_per_aadhar}"
+                app:boxCornerRadiusBottomEnd="4dp"
+                app:boxCornerRadiusBottomStart="4dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp">
+
+                <EditText
+                    android:id="@+id/input_aadhar_name"
+                    style="@style/AajeevikaCLF.EditText"
+                    android:inputType="text"
+                    tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/AajeevikaCLF.TextInputLayout"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="16sp"
+                android:hint="@{isRequired?@string/dob_as_per_aadhar_required:@string/dob_as_per_aadhar, default=@string/dob_as_per_aadhar}"
+                app:boxCornerRadiusBottomEnd="4dp"
+                app:boxCornerRadiusBottomStart="4dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp">
+
+                <EditText
+                    android:id="@+id/input_aadhar_dob"
+                    style="@style/AajeevikaCLF.EditText"
+                    android:cursorVisible="false"
+                    android:importantForAutofill="no"
+                    android:focusable="false"
+                    android:inputType="textNoSuggestions"
+                    tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/outline_dashed_w1_orange_r4"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/upload_aadhar_front_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@{isRequired?@string/upload_front_image_of_aadhar_required:@string/upload_front_image_of_aadhar, default=@string/upload_front_image_of_aadhar}"
+                    android:textColor="@color/gray_400"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/upload_aadhar_front_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="@string/upload_underline"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/outline_dashed_w1_orange_r4"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/upload_aadhar_back_txt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text="@{isRequired?@string/upload_back_image_of_aadhar_required:@string/upload_back_image_of_aadhar, default=@string/upload_back_image_of_aadhar}"
+                    android:textColor="@color/gray_400"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/upload_aadhar_back_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="@string/upload_underline"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

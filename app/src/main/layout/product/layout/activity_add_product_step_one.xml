@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.util.ArrayList" />
+
+        <variable
+            name="categoryList"
+            type="ArrayList&lt;String&gt;" />
+
+        <variable
+            name="subCategoryList"
+            type="ArrayList&lt;String&gt;" />
+
+        <variable
+            name="materialList"
+            type="ArrayList&lt;String&gt;" />
+
+        <variable
+            name="productList"
+            type="ArrayList&lt;String&gt;" />
+
+        <variable
+            name="sizeUnitList"
+            type="ArrayList&lt;String&gt;" />
+
+        <variable
+            name="volumeUnitList"
+            type="ArrayList&lt;String&gt;" />
+
+        <variable
+            name="weightUnitList"
+            type="ArrayList&lt;String&gt;" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_50"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
+            app:title="@{ @string/product_add }" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="32dp"
+                    android:hint="@string/select_category_required">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/input_select_category"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:cursorVisible="false"
+                        android:inputType="textNoSuggestions"
+                        android:importantForAutofill="no"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:paddingEnd="10dp"
+                        app:dropDownMenu="@{ categoryList }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/select_sub_category_required">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/input_select_sub_category"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:cursorVisible="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:paddingEnd="10dp"
+                        app:dropDownMenu="@{ subCategoryList }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/select_product_type_required">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/input_product_type"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:cursorVisible="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:paddingEnd="10dp"
+                        app:dropDownMenu="@{ materialList }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/product_name_required">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/input_product_name"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:cursorVisible="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:paddingEnd="10dp"
+                        app:dropDownMenu="@{ productList }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/product_dimension_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/product_dimension"
+                    android:textColor="@color/gray_600"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    app:fontFamily="@font/sarabun_medium" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/width_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:hint="@string/width_required"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/input_width_dimension"
+                            style="@style/AajeevikaCLF.EditText"
+                            android:inputType="numberDecimal"
+                            android:paddingEnd="116dp"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/width_dimension_unit"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/outline_w1_gray_100_filled_gray_50_right_r8"
+                        android:cursorVisible="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:includeFontPadding="false"
+                        android:padding="10dp"
+                        android:text="@string/default_size_unit"
+                        android:textSize="14sp"
+                        app:dropDownMenu="@{ sizeUnitList }"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:ignore="LabelFor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/height_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:hint="@string/height_required"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/input_height_dimension"
+                            style="@style/AajeevikaCLF.EditText"
+                            android:inputType="numberDecimal"
+                            android:paddingEnd="116dp"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/height_dimension_unit"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/outline_w1_gray_100_filled_gray_50_right_r8"
+                        android:cursorVisible="false"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:includeFontPadding="false"
+                        android:padding="10dp"
+                        android:text="@string/default_size_unit"
+                        android:textSize="14sp"
+                        app:dropDownMenu="@{ sizeUnitList }"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:ignore="LabelFor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/length_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:hint="@string/length_required"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/input_length_dimension"
+                            style="@style/AajeevikaCLF.EditText"
+                            android:inputType="numberDecimal"
+                            android:paddingEnd="116dp"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/length_dimension_unit"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/outline_w1_gray_100_filled_gray_50_right_r8"
+                        android:cursorVisible="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:includeFontPadding="false"
+                        android:padding="10dp"
+                        android:text="@string/default_size_unit"
+                        android:textSize="14sp"
+                        app:dropDownMenu="@{ sizeUnitList }"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:ignore="LabelFor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/volume_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:hint="@string/volume_required"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/input_volume_dimension"
+                            style="@style/AajeevikaCLF.EditText"
+                            android:inputType="numberDecimal"
+                            android:paddingEnd="116dp"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/volume_dimension_unit"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/outline_w1_gray_100_filled_gray_50_right_r8"
+                        android:cursorVisible="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:includeFontPadding="false"
+                        android:padding="10dp"
+                        android:text="@string/default_volume_unit"
+                        android:textSize="14sp"
+                        app:dropDownMenu="@{ volumeUnitList }"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:ignore="LabelFor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/weight_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:hint="@string/weight_required"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/input_weight_dimension"
+                            style="@style/AajeevikaCLF.EditText"
+                            android:inputType="numberDecimal"
+                            android:paddingEnd="116dp"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/weight_dimension_unit"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/outline_w1_gray_100_filled_gray_50_right_r8"
+                        android:cursorVisible="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:includeFontPadding="false"
+                        android:padding="10dp"
+                        android:text="@string/default_weight_unit"
+                        android:textSize="14sp"
+                        app:dropDownMenu="@{ weightUnitList }"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:ignore="LabelFor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/product_local_name"
+                    android:textColor="@color/gray_600"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/sarabun_medium" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="24dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:hint="@string/english_required">
+
+                        <EditText
+                            android:id="@+id/input_local_name_english"
+                            style="@style/AajeevikaCLF.EditText"
+                            android:inputType="text"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:hint="@string/hindi_required">
+
+                        <EditText
+                            android:id="@+id/input_local_name_hindi"
+                            style="@style/AajeevikaCLF.EditText"
+                            android:inputType="text"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/next_btn"
+            style="@style/AajeevikaCLF.ActiveButton.Solid"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/next" />
+
+    </LinearLayout>
+</layout>

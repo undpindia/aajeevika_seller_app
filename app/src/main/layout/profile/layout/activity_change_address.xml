@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="java.util.ArrayList" />
+        <import type="com.aajeevika.clf.model.data_model.AddressData" />
+
+        <variable
+            name="districtList"
+            type="ArrayList&lt;String&gt;" />
+
+        <variable
+            name="blockList"
+            type="ArrayList&lt;String&gt;" />
+
+        <variable
+            name="address"
+            type="AddressData" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
+            app:title="@{ @string/change_address }" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="18sp"
+                    android:hint="@string/address_line_1_required"
+                    app:boxCornerRadiusBottomEnd="4dp"
+                    app:boxCornerRadiusBottomStart="4dp"
+                    app:boxCornerRadiusTopEnd="4dp"
+                    app:boxCornerRadiusTopStart="4dp">
+
+                    <EditText
+                        android:id="@+id/input_address_line_one"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:inputType="textPostalAddress"
+                        android:singleLine="true"
+                        android:text="@{ address.address_line_one }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="18sp"
+                    android:hint="@string/address_line_2"
+                    app:boxCornerRadiusBottomEnd="4dp"
+                    app:boxCornerRadiusBottomStart="4dp"
+                    app:boxCornerRadiusTopEnd="4dp"
+                    app:boxCornerRadiusTopStart="4dp">
+
+                    <EditText
+                        android:id="@+id/input_address_line_two"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:inputType="textPostalAddress"
+                        android:singleLine="true"
+                        android:text="@{ address.address_line_two }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="18sp"
+                    android:hint="@string/country_required"
+                    app:boxCornerRadiusBottomEnd="4dp"
+                    app:boxCornerRadiusBottomStart="4dp"
+                    app:boxCornerRadiusTopEnd="4dp"
+                    app:boxCornerRadiusTopStart="4dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/input_country"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:cursorVisible="false"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:paddingEnd="10dp"
+                        android:text="@{ address.country }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="18sp"
+                    android:hint="@string/state_required"
+                    app:boxCornerRadiusBottomEnd="4dp"
+                    app:boxCornerRadiusBottomStart="4dp"
+                    app:boxCornerRadiusTopEnd="4dp"
+                    app:boxCornerRadiusTopStart="4dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/input_state"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:cursorVisible="false"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:paddingEnd="10dp"
+                        android:text="@{ address.state }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="18sp"
+                    android:hint="@string/district_required"
+                    app:boxCornerRadiusBottomEnd="4dp"
+                    app:boxCornerRadiusBottomStart="4dp"
+                    app:boxCornerRadiusTopEnd="4dp"
+                    app:boxCornerRadiusTopStart="4dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/input_district"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:cursorVisible="false"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:paddingEnd="10dp"
+                        android:text="@{ address.district }"
+                        app:dropDownMenu="@{ districtList }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="18sp"
+                    android:hint="@string/pin_required"
+                    app:boxCornerRadiusBottomEnd="4dp"
+                    app:boxCornerRadiusBottomStart="4dp"
+                    app:boxCornerRadiusTopEnd="4dp"
+                    app:boxCornerRadiusTopStart="4dp">
+
+                    <EditText
+                        android:id="@+id/input_pin"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:digits="0123456789"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:text="@{ address.pincode }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry,TextFields" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AajeevikaCLF.TextInputLayout"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="18sp"
+                    android:layout_marginBottom="28dp"
+                    android:hint="@string/block_required"
+                    app:boxCornerRadiusBottomEnd="4dp"
+                    app:boxCornerRadiusBottomStart="4dp"
+                    app:boxCornerRadiusTopEnd="4dp"
+                    app:boxCornerRadiusTopStart="4dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/input_block"
+                        style="@style/AajeevikaCLF.EditText"
+                        android:cursorVisible="false"
+                        android:drawableEnd="@drawable/dropdown_icon"
+                        android:focusable="false"
+                        android:importantForAutofill="no"
+                        android:inputType="textNoSuggestions"
+                        android:paddingEnd="10dp"
+                        android:text="@{ address.block }"
+                        app:dropDownMenu="@{ blockList }"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/save_btn"
+            style="@style/AajeevikaCLF.ActiveButton.Solid"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/save_changes" />
+
+    </LinearLayout>
+</layout>

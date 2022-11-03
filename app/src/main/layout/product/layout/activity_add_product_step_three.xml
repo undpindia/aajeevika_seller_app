@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="editable"
+            type="boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_50"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
+            app:enableEditButton="@{ true }"
+            app:title="@{ @string/product_add }" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="16dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/product_description_in_english_required"
+                    android:textColor="@color/gray_600"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/sarabun_medium" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/gray_100" />
+
+                <EditText
+                    android:id="@+id/input_description_english"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="18dp"
+                    android:background="@null"
+                    android:enabled="@{ editable }"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/gray_400"
+                    android:textSize="16sp"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="16dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/product_description_in_hindi_required"
+                    android:textColor="@color/gray_600"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/sarabun_medium" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/gray_100" />
+
+                <EditText
+                    android:id="@+id/input_description_hindi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="18dp"
+                    android:background="@null"
+                    android:enabled="@{ editable }"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/gray_400"
+                    android:textSize="16sp"
+                    tools:ignore="Autofill,LabelFor" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/save_draft_btn"
+                style="@style/AajeevikaCLF.ActiveButton.Outline"
+                android:layout_width="0dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:text="@string/save_to_draft"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/add_btn"
+                style="@style/AajeevikaCLF.ActiveButton.Solid"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/add" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="java.util.ArrayList" />
+
+        <variable
+            name="interestId"
+            type="String" />
+
+        <variable
+            name="buyerName"
+            type="String" />
+
+        <variable
+            name="message"
+            type="String" />
+
+        <variable
+            name="collectionCenterList"
+            type="ArrayList&lt;String&gt;" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_50">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/view_toolbar"
+                app:title="@{ @string/add_new_sale }" />
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray_50"
+                    android:orientation="vertical"
+                    android:paddingBottom="14dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="20dp"
+                        android:hint="@string/interest_id_required">
+
+                        <EditText
+                            android:id="@+id/input_interest_id"
+                            style="@style/AajeevikaCLF.EditText"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:importantForAutofill="no"
+                            android:inputType="textNoSuggestions"
+                            android:text="@{ interestId }"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="20dp"
+                        android:hint="@string/name_of_buyer_required">
+
+                        <EditText
+                            style="@style/AajeevikaCLF.EditText"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:importantForAutofill="no"
+                            android:inputType="textNoSuggestions"
+                            android:text="@{ buyerName }"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="14dp"
+                        android:text="@string/mode_of_delivery"
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp"
+                        app:fontFamily="@font/sarabun_medium" />
+
+                    <RadioGroup
+                        android:id="@+id/delivery_mode_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginBottom="14dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/mode_self"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/self"
+                            android:textColor="@color/gray_400"
+                            android:textSize="14sp" />
+
+                        <RadioButton
+                            android:id="@+id/mode_collection_center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32dp"
+                            android:text="@string/collection_centre"
+                            android:textColor="@color/gray_400"
+                            android:textSize="14sp" />
+
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/AajeevikaCLF.TextInputLayout"
+                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="14dp"
+                        android:hint="@string/collection_center_required"
+                        android:visibility="@{ modeCollectionCenter.checked? View.VISIBLE: View.GONE, default=gone }">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/input_collection_center"
+                            style="@style/AajeevikaCLF.EditText"
+                            android:cursorVisible="false"
+                            android:drawableEnd="@drawable/dropdown_icon"
+                            android:focusable="false"
+                            android:importantForAutofill="no"
+                            android:inputType="textNoSuggestions"
+                            android:paddingEnd="10dp"
+                            app:dropDownMenu="@{ collectionCenterList }"
+                            tools:ignore="Autofill,LabelFor,RtlSymmetry" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/date_of_sale_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/solid_gray_50_r4">
+
+                    <TextView
+                        android:id="@+id/date_of_sale_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/date_of_sale"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/date_of_sale_value"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/date_of_sale_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="14dp"
+                        android:includeFontPadding="false"
+                        android:text="02/06/2021"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/date_of_sale_txt"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/solid_gray_50_r4"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/date_of_creation_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/date_of_creation"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/date_of_creation_value"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/date_of_creation_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="14dp"
+                        android:includeFontPadding="false"
+                        android:text="02/06/2021"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/date_of_creation_txt"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_View"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <LinearLayout
+                    android:id="@+id/add_products_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginHorizontal="16dp"
+                    android:orientation="horizontal"
+                    android:paddingVertical="4dp"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_round_add_circle"
+                        app:tint="@color/orange"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/add_products_underline"
+                        android:textColor="@color/orange"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/sarabun_bold" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:includeFontPadding="false"
+                    android:text="@string/message"
+                    android:textColor="@color/gray_600"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/sarabun_medium" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/outline_w1_gray_100_r4"
+                    android:gravity="top|start"
+                    android:includeFontPadding="false"
+                    android:padding="16dp"
+                    android:text="@{ message }"
+                    android:textColor="@color/gray_300"
+                    android:textSize="14sp" />
+
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:stepSize="0.1" />
+
+                <EditText
+                    android:id="@+id/input_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/outline_w1_gray_100_r4"
+                    android:gravity="start|top"
+                    android:hint="@string/feedback_for_buyer_required"
+                    android:includeFontPadding="false"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:padding="12dp"
+                    android:textColor="@color/gray_600"
+                    android:textColorHint="@color/gray_400"
+                    android:textSize="16sp"
+                    tools:ignore="Autofill" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/submit_btn"
+            style="@style/AajeevikaCLF.ActiveButton.Solid"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/submit" />
+
+    </LinearLayout>
+</layout>

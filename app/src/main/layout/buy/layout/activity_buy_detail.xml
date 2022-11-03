@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="buyerName"
+            type="String" />
+
+        <variable
+            name="buyerId"
+            type="String" />
+
+        <variable
+            name="date"
+            type="String" />
+
+        <variable
+            name="individualName"
+            type="String" />
+
+        <variable
+            name="individualProfileImage"
+            type="String" />
+
+        <variable
+            name="individualRating"
+            type="float" />
+
+        <variable
+            name="individualMessage"
+            type="String" />
+
+        <variable
+            name="clfName"
+            type="String" />
+
+        <variable
+            name="clfProfileImage"
+            type="String" />
+
+        <variable
+            name="clfRating"
+            type="float" />
+
+        <variable
+            name="clfMessage"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/view_toolbar"
+            app:title="@{ @string/buy_detail }" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_16dp"
+                    android:background="@drawable/solid_green_op10_r4">
+
+                    <TextView
+                        android:id="@+id/buyer_name_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginEnd="16dp"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:lines="1"
+                        android:text="@{ buyerName }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="18sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/date_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/solid_white_r24"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:lines="1"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="4dp"
+                        android:text="@{ date }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="12sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/buyer_name_value"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/buyer_name_value"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/order_id_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="14dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/buyer_id"
+                        android:textColor="@color/gray_600"
+                        android:textSize="12sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/buyer_name_value" />
+
+                    <TextView
+                        android:id="@+id/interest_id_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:lines="1"
+                        android:text="@{ buyerId }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="14sp"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/order_id_txt" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_View"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="20dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/buyer_profile_img"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/profile_placeholder"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:loadImageFromNetwork="@{ individualProfileImage }"
+                        app:placeholder="@{ @drawable/profile_placeholder }" />
+
+                    <TextView
+                        android:id="@+id/buyer_name_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:includeFontPadding="false"
+                        android:text="@{ individualName }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toTopOf="@+id/buyer_rating_bar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/buyer_profile_img"
+                        app:layout_constraintTop_toTopOf="@+id/buyer_profile_img"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <RatingBar
+                        android:id="@+id/buyer_rating_bar"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:max="5"
+                        android:rating="@{ individualRating }"
+                        android:stepSize="0.1"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/buyer_profile_img"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/buyer_profile_img"
+                        app:layout_constraintTop_toBottomOf="@+id/buyer_name_txt" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:includeFontPadding="false"
+                        android:text="@{ individualMessage }"
+                        android:textColor="@color/gray_400"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/buyer_profile_img" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="@{ clfMessage!=null? View.VISIBLE: View.GONE, default=gone }">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/clf_profile_img"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/profile_placeholder"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:loadImageFromNetwork="@{ clfProfileImage }"
+                        app:placeholder="@{ @drawable/profile_placeholder }" />
+
+                    <TextView
+                        android:id="@+id/clf_name_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:includeFontPadding="false"
+                        android:text="@{ clfName }"
+                        android:textColor="@color/gray_600"
+                        android:textSize="16sp"
+                        app:fontFamily="@font/sarabun_bold"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toTopOf="@+id/clf_rating_bar"
+                        app:layout_constraintEnd_toStartOf="@+id/clf_profile_img"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/clf_profile_img"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <RatingBar
+                        android:id="@+id/clf_rating_bar"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:max="5"
+                        android:rating="@{ clfRating }"
+                        android:stepSize="0.1"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/clf_profile_img"
+                        app:layout_constraintEnd_toStartOf="@+id/clf_profile_img"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/clf_name_txt" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="end"
+                        android:includeFontPadding="false"
+                        android:text="@{ clfMessage }"
+                        android:textColor="@color/gray_400"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/clf_profile_img" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    android:visibility="@{ clfMessage!=null? View.GONE: View.VISIBLE, default=gone }" />
+
+                <EditText
+                    android:id="@+id/input_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/outline_w1_gray_100_r4"
+                    android:gravity="start|top"
+                    android:hint="@string/feedback_for_buyer_required"
+                    android:includeFontPadding="false"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:padding="12dp"
+                    android:textColor="@color/gray_600"
+                    android:textColorHint="@color/gray_400"
+                    android:textSize="16sp"
+                    android:visibility="@{ clfMessage!=null? View.GONE: View.VISIBLE, default=gone }"
+                    tools:ignore="Autofill" />
+
+                <TextView
+                    android:id="@+id/submit_btn"
+                    style="@style/AajeevikaCLF.ActiveButton.Solid"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/submit"
+                    android:visibility="@{ clfMessage!=null? View.GONE: View.VISIBLE, default=gone }" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>
